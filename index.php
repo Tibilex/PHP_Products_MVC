@@ -11,13 +11,34 @@
 <div class="container">
    <header>
       <div class="nav__bar">
-         <a class="nav__link" href="./Views/AdminPage.php">Админ панель</a>
-         <a class="nav__link" href="./Views/CartPage.php">Корзина</a>
+         <a class="nav__link" href="AdminPage.php">Админ панель</a>
+         <a class="nav__link" href="CartPage.php">Корзина</a>
       </div>
    </header>
-   <main>
+   <main class="product__container">
       <?php
+      include 'Controllers/ProductController.php';
 
+      $connectionString = new mysqli("localhost", "root", "", "education");
+      if($connectionString->connect_error){
+         echo 'ERROR';
+      }
+      else{
+         $sql_code = "SELECT * FROM `product_1`";
+
+         if($results = $connectionString->query($sql_code)) {
+            foreach ($results as $res){
+               $products = new ProductController();
+               $products->setProduct($res["id"], $res["name"], $res["price"], $res["code"], $res["image"]);
+                echo $products->BuildProductTile();
+            }
+            $results->free();
+         }
+         else {
+            echo '<p>Data NOT selected!</p>';
+         }
+      }
+      $connectionString->close();
       ?>
    </main>
 </div>

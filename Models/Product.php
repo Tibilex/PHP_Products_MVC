@@ -2,17 +2,27 @@
 
 class Product
 {
+   private $id;
    private $name;
    private $price;
    private $code;
    private $image;
 
-   public function __construct($name, $price, $code, $image)
+
+   public function __construct($id, $name, $price, $code, $image)
    {
+      $this->id = $id;
       $this->name = $name;
       $this->price = $price;
       $this->code = $code;
       $this->image = $image;
+   }
+
+   function getId(){
+      return $this->id;
+   }
+   function setId($price){
+      $this->id = $price;
    }
 
    function getPrice(){
@@ -43,6 +53,12 @@ class Product
       $this->image = $image;
    }
 
-
-
+   public function __destruct()
+   {
+      unset($this->id);
+      unset($this->name);
+      unset($this->code);
+      unset($this->image);
+      unset($this->price);
+   }
 }

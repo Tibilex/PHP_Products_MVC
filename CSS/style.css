@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    background: #cbcbcb;
 }
 
 .container{
@@ -10,15 +11,114 @@
     width: 1440px;
 }
 
+.input__container{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.form__container{
+    display: flex;
+    flex-direction: column;
+    background: #242B33;
+    padding: 5px;
+}
+.form__container label{
+    color: white;
+}
+
+
 .nav__bar{
     position: relative;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: start;
+    background: #242B33;
 }
 
 .nav__link{
     text-decoration: none;
     font-size: 24px;
-    color: blue;
+    color: #00ac45;
+    margin-left: 20px;
+    background: #242B33;
+}
+.nav__link:hover{
+    color: #d0e8cc;
+}
+
+.product__container{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.product__container--size{
+    width: 80%;
+}
+
+.item__container{
+    position: relative;
+    flex: 0 1 20%;
+    background: White;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    border: solid #242B33 1px;
+    margin: 5px;
+}
+
+._admin__container{
+    margin: 15px 5px 5px 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    border: 1px solid black;
+    background: white;
+}
+
+.edit__form {
+    display: flex;
+}
+.item__price-text{
+    color: #777e90;
+    background: white;
+    font-size: 10px;
+}
+.item__price{
+    color: #ff0202;
+    background: white;
+}
+.item__code{
+    background: white;
+    color: #777e90;
+    font-size: 14px;
+}
+.item__img{
+    background: white;
+    height: 70%;
+}
+.item__name{
+    background: white;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.item__btn{
+    background: #00ac45;
+    color : white;
+    width: 80%;
+    border: none;
+    transition: all .3ms;
+    height: 40px;
+    margin-bottom: 10px;
+}
+.item__btn:hover{
+    background: #0d7235;
+    transition: all .3ms;
 }
