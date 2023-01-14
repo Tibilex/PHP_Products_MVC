@@ -21,6 +21,7 @@ $productController = new ProductController();
    </header>
    <main class="product__container">
       <div class="input__container">
+         <div >
          <form enctype="multipart/form-data" class="form__container" method="post" action="AdminPage.php">
             <label for="prodName">Имя:</label>
             <label>
@@ -36,7 +37,7 @@ $productController = new ProductController();
             </label>
                <label for="prodImage">Изображение:</label>
                <input name="file" type="file" accept="image/png, image/svg, image/jpeg, image/jpg">
-               <button type="submit" name="addBtn">Добавить товар</button>
+               <button class="item__btn pos" type="submit" name="addBtn">Добавить товар</button>
             <?php
 
             if(isset($_POST['delBtn'])){
@@ -59,6 +60,23 @@ $productController = new ProductController();
             }
             ?>
          </form>
+         <div class="search__container">
+            <form class="form__container">
+               <label for="searchInput">Поиск по названию:</label>
+               <input name="searchInput" type="text">
+               <button class="item__btn pos enabled" type="submit" name="addBtn">Поиск!</button>
+
+               <?php
+               /*
+               if(isset($_POST['searchInput'])){
+                  $productController->Search('searchInput');
+               }
+               */
+               ?>
+
+            </form>
+         </div>
+         </div>
       </div>
       <div class="product__container product__container--size">
          <?php
@@ -67,9 +85,9 @@ $productController = new ProductController();
             echo 'ERROR';
          }
          else{
-            $sql_code = "SELECT * FROM `product_1`";
+            $request = "SELECT * FROM `product_1`";
 
-            if($results = $connectionString->query($sql_code)) {
+            if($results = $connectionString->query($request)) {
                foreach ($results as $res){
                   $products = new ProductController();
                   $products->setProduct($res["id"], $res["name"], $res["price"], $res["code"], $res["image"]);

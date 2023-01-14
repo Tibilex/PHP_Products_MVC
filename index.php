@@ -18,15 +18,21 @@
    <main class="product__container">
       <?php
       include 'Controllers/ProductController.php';
+      $products = new ProductController();
+
+      if(isset($_POST['buyBtn'])){
+         $itemId = $_POST['buyBtn'];
+         $products->AddToCart($itemId);
+      }
 
       $connectionString = new mysqli("localhost", "root", "", "education");
       if($connectionString->connect_error){
          echo 'ERROR';
       }
       else{
-         $sql_code = "SELECT * FROM `product_1`";
+         $request = "SELECT * FROM `product_1`";
 
-         if($results = $connectionString->query($sql_code)) {
+         if($results = $connectionString->query($request)) {
             foreach ($results as $res){
                $products = new ProductController();
                $products->setProduct($res["id"], $res["name"], $res["price"], $res["code"], $res["image"]);

@@ -109,4 +109,22 @@ class ProductController
          }
       }
    }
+
+   public function Search($searchString){
+      if (isset($_POST[''])){
+         $connectionString = new mysqli("localhost", "root", "", "education");
+         if ($connectionString->connect_error) {
+            echo "error";
+         }
+         else{
+            $valueToSearch = $_POST['searchInput'];
+            $request = 'SELECT * FROM product_1 WHERE name="'.$valueToSearch.'"';
+         }
+         if($connectionString->query($request)){
+            $this->BuildProductTile();
+            $connectionString->close();
+         }
+
+      }
+   }
 }

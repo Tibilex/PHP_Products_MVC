@@ -17,6 +17,7 @@
    <main class="product__container">
       <?php
 
+      echo '<div >result = '.$_SESSION['testResult1'].'</div>';
       ?>
    </main>
 </div>
